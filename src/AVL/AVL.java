@@ -5,11 +5,11 @@ import logic.AVLNode;
 
 /**
  * clase del arbol avl.
- * @author stiven
+ *
  * @param <T> 
  */
 public class AVL <T extends Comparable<T>>{
-    private AVLNode raiz;
+    private AVLNode raiz; 
 
     /**
      * constructor
@@ -146,23 +146,75 @@ public class AVL <T extends Comparable<T>>{
         return pnodo == null ? -1 : pnodo.getAltura();// recorre el arbol y devuelve la altura.
     }
 
-    /*
-     * Imprime el arbol con el recorrido Inorden
-     */
-    public void imprimir(){
-        imprimir(raiz);
-    }
     /**
-     * auxuliar de imprimir().
-     * @param nodo 
-     */
-    public void imprimir(AVLNode nodo){//metodo auxiliar de la impresion inorden.
-        if ( nodo != null ){//mientras no sea nulo.
-            imprimir(nodo.getNodoDer());
-            System.out.println(nodo.getDato());
-            imprimir(nodo.getNodoIzq());
+    * @param pdato
+    * @return boolean encontrado.
+    */  
+   public boolean buscar(T pdato) {
+        Comparable dato = (Comparable) pdato;
+        if (raiz == null)//si es nulo devuelve falso
+                return false;
+        else {
+            AVLNode root = raiz;
+            while (root != null) {//va recorriendo los nodos hasta encontrarlo.
+                    if (dato.compareTo(root.getDato())==0)
+                            return true;
+                    else if (dato.compareTo(root.getDato())<0)
+                            root = root.getNodoIzq();
+                    else
+                            root = root.getNodoDer();
+            }
+            return false;
         }
     }
+   
+  
+    /**
+     * prints preorden
+     */
+     public void PreOrden(){
+        imprimirPreOrden(raiz);
+    }
+    /**
+     * imprime el arbol en preorden.
+     * @param raiz_arbol 
+     */
+     private void imprimirPreOrden (AVLNode raiz_arbol)//preorden(raiz-izquierdo-derecho.
+      {   //BinaryNode raiz_arbol=raiz;
+         if (raiz_arbol != null)
+          {
+              System.out.print(raiz_arbol.getDato() + " ");
+              imprimirPreOrden (raiz_arbol.getNodoIzq());
+              imprimirPreOrden (raiz_arbol.getNodoDer());
+          }
+      }
+     
+     public void InOrden(){
+        imprimirInorden(raiz);
+    }
+     private void imprimirInorden (AVLNode raiz_arbol)//preorden(izquierdo-raiz-derecho.
+      {   //BinaryNode raiz_arbol=raiz;
+         if(raiz_arbol != null) 
+          {
+              imprimirInorden(raiz_arbol.getNodoIzq());
+              System.out.print(raiz_arbol.getDato() + " ");
+              imprimirInorden(raiz_arbol.getNodoDer());
+          }
+      }
+     
+     public void PostOrden(){
+        imprimirPostorden(raiz);
+    }
+     
+      private void imprimirPostorden (AVLNode raiz_arbol)//postorden(izquierdo-derecho-raiz.
+      {  // BinaryNode raiz_arbol=raiz;
+         if (raiz_arbol != null)
+          {
+              imprimirPostorden (raiz_arbol.getNodoIzq());
+              imprimirPostorden (raiz_arbol.getNodoDer());
+              System.out.print(raiz_arbol.getDato() + " ");
+          }
+      }
 
   
 }
