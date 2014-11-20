@@ -6,12 +6,12 @@ import Splay.SplayTree;
 import java.util.Scanner;
 import Splay.RandomGeneratorSplay;
 import Splay.SplayTree;
-   
+    
 
 public class main {
 
-     public static void main(String[] args){      
-        Binary binarytree=new Binary();
+     public static void main(String[] args){   //casos de prueba.   
+        Binary binarytree=new Binary();//instancias.
         AVL avltree=new AVL();
         RedBlack redblack=new RedBlack();
         SplayTree splaytree=new SplayTree();
@@ -79,7 +79,7 @@ public class main {
          System.out.println("\t");
         
             System.out.println("eliminar 23");
-           // avltree.eliminar(23);
+            //avltree.eliminar(23);
             avltree.InOrden();
             System.out.println("\t");
             System.out.println("eliminar 56");
