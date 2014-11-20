@@ -1,25 +1,18 @@
 
-package logic;
+package Binary;
 
-
-public class Binary<T extends Comparable<T>> {
+public class Binary <T extends Comparable<T>> {
     private BinaryNode raiz;
     
     /**
      * constructor sin argumentos
      * @return 
      */
-    public Binary(){
+    public Binary(){ 
         this.raiz=null;
     }
-    /**
-     * contructor con argumento raiz
-     * @param raiz 
-     Binary  public Arbol(BinaryNode<T> raiz){
-        this.raiz=raiz;
-    }
     
-    /**
+     /**
      * 
      * @return raiz
      */
@@ -33,6 +26,13 @@ public class Binary<T extends Comparable<T>> {
      */
     public void setRaiz(BinaryNode raiz) {
         this.raiz = raiz;
+    }
+    
+    /**
+     * contructor con argumento raiz
+     * @param raiz 
+     Binary  public Arbol(BinaryNode<T> raiz){
+        this.raiz=raiz;
     }
   
     /**
@@ -108,11 +108,11 @@ public class Binary<T extends Comparable<T>> {
         raiz_aux=null;
         
 }
-/**
- * Reemplaza el nodo actual, por el datomayor de la rama izquierda
- * @param act nodo actual o nodo a eliminar que tiene rama izquierda y derecha
- */
-private void MayorIzquierdo(BinaryNode actual){//Buscar el datomayor de los menores.
+        /**
+         * Reemplaza el nodo actual, por el datomayor de la rama izquierda
+         * @param act nodo actual o nodo a eliminar que tiene rama izquierda y derecha
+         */
+       private void MayorIzquierdo(BinaryNode actual){//Buscar el datomayor de los menores.
         BinaryNode datomayor=actual;
         BinaryNode anterior = actual;
         datomayor = actual.getNodoIzq();//anterior es el anteriorecesor de datomayor.anterior es el padre.
@@ -128,17 +128,47 @@ private void MayorIzquierdo(BinaryNode actual){//Buscar el datomayor de los meno
         }
 
   
+    public void PreOrden(){
+        imprimirPreOrden(raiz);
+    }
     /**
      * imprime el arbol en preorden.
      * @param raiz_arbol 
      */
-     public void imprimirPreOrden (BinaryNode raiz_arbol)//preorden(raiz-izquierdo-derecho.
-      {   
-          if (raiz_arbol != null)
+     private void imprimirPreOrden (BinaryNode raiz_arbol)//preorden(raiz-izquierdo-derecho.
+      {   //BinaryNode raiz_arbol=raiz;
+         if (raiz_arbol != null)
           {
               System.out.print(raiz_arbol.getDato() + " ");
               imprimirPreOrden (raiz_arbol.getNodoIzq());
               imprimirPreOrden (raiz_arbol.getNodoDer());
+          }
+      }
+     
+     public void InOrden(){
+        imprimirInorden(raiz);
+    }
+     private void imprimirInorden (BinaryNode raiz_arbol)//preorden(izquierdo-raiz-derecho.
+      {   //BinaryNode raiz_arbol=raiz;
+         if(raiz_arbol != null)
+          {
+              imprimirInorden(raiz_arbol.getNodoIzq());
+              System.out.print(raiz_arbol.getDato() + " ");
+              imprimirInorden(raiz_arbol.getNodoDer());
+          }
+      }
+     
+     public void PostOrden(){
+        imprimirPostorden(raiz);
+    }
+     
+      private void imprimirPostorden (BinaryNode raiz_arbol)//postorden(izquierdo-derecho-raiz.
+      {  // BinaryNode raiz_arbol=raiz;
+         if (raiz_arbol != null)
+          {
+              imprimirPostorden (raiz_arbol.getNodoIzq());
+              imprimirPostorden (raiz_arbol.getNodoDer());
+              System.out.print(raiz_arbol.getDato() + " ");
           }
       }
 }
