@@ -207,7 +207,7 @@ public class AVL <T extends Comparable<T>>{
     }
      
       private void imprimirPostorden (AVLNode raiz_arbol)//postorden(izquierdo-derecho-raiz.
-      {  // BinaryNode raiz_arbol=raiz;
+      {  // BinaryNode raiz_arbol=raiz
          if (raiz_arbol != null)
           {
               imprimirPostorden (raiz_arbol.getNodoIzq());
